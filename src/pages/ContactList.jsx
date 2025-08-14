@@ -71,7 +71,7 @@ function ContactList() {
         style={{ marginBottom: "10px", padding: "5px" }}
       />
       <ul>
-        
+
         {filteredContacts.map(contact => (
           <li key={contact.id} style={{ marginBottom: "10px" }}>
             {editingContactId === contact.id ? (
@@ -116,7 +116,7 @@ function ContactList() {
               </div>
             ) : (
               <>
-              <button onClick={() => navigate("/add")}>Add New Contact</button>
+                <button onClick={() => navigate("/add")}>Add New Contact</button>
 
                 <span
                   onClick={() => setSelectedContact(contact)}

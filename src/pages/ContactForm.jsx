@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { db } from "../firebase"; // your Firebase config
+import { db } from "../firebase";
 import { collection, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function ContactForm() {
-  const { id } = useParams(); // Will be undefined for "new" route
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [contact, setContact] = useState({
@@ -16,7 +16,6 @@ export default function ContactForm() {
 
   const contactsCollection = collection(db, "contacts");
 
-  // If editing, fetch the contact data
   useEffect(() => {
     if (id) {
       const fetchContact = async () => {
@@ -38,12 +37,12 @@ export default function ContactForm() {
     e.preventDefault();
 
     if (id) {
-      // Update existing contact
+
       const docRef = doc(db, "contacts", id);
       await updateDoc(docRef, contact);
       navigate(`/contact/${id}`);
     } else {
-      // Add new contact
+
       const docRef = await addDoc(contactsCollection, contact);
       navigate(`/contact/${docRef.id}`);
     }

@@ -1,4 +1,4 @@
-// src/components/AddContact.js
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
@@ -8,7 +8,7 @@ function AddContact() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(""); // optional
+  const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,7 +26,7 @@ function AddContact() {
         email,
         phone,
       });
-      // Redirect to the new contact's details page
+
       navigate(`/contacts/${docRef.id}`);
     } catch (error) {
       console.error("Error adding contact:", error);
